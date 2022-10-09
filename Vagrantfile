@@ -1,7 +1,6 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define "ubuntu" do |target|
-  config.ssh.username = "root"
     target.vm.provider "docker" do |d|
       d.image = "tknerr/baseimage-ubuntu:18.04"
       d.has_ssh = true
