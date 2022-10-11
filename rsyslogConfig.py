@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 with open('/etc/rsyslog.d/50-default.conf', 'r') as file:
     data = file.read()
 
