@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-# rmb to chmod 777 and run as ./filename.py
 with open('/root/redis/redis-4.0.0/redis.conf', 'r') as file:
     data = file.read()
 
