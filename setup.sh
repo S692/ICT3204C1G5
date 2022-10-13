@@ -50,20 +50,38 @@ sudo echo "* *   * * *   root   cd /var/research && tar cf /var/backups/backup.t
 sudo service cron start
 
 # for email server (postfix)
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
-sudo postconf -e "myhostname = target.example.com"
-sudo postconf -e "mydestination = $myhostname, example.com, target.example.com, localhost.example.com, localhost"
+echo "postfix postfix/mailname string example.com" | debconf-set-selections
+echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+echo "postfix postfix/destinations string  $myhostname, example.com, mail.example.com, localhost.example.com, localhost" | debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes postfix
+
+sudo postconf -e "myhostname = target"
+sudo postconf -e "myorigin = /etc/mailname"
+sudo postconf -e "mydestination = \$myhostname, example.com, mail.example.com, localhost.example.com, localhost"
 sudo postconf -e "home_mailbox = Maildir/"
-sudo postconf -e 'virtual_alias_maps = hash:/etc/postfix/virtual'
-echo "contact@example.com \troot \nadmin@example.com \troot" > /etc/postfix/virtual
+sudo postconf -e "virtual_alias_maps = hash:/etc/postfix/virtual"
+echo "contact@example.com\troot \nadmin@example.com\troot" > /etc/postfix/virtual
+echo "example.com" > /etc/mailname
 sudo postmap /etc/postfix/
+sudo postmap /etc/postfix/virtual
+sudo postalias /etc/aliases
 sudo postfix start
 sudo postfix reload
+echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
+source /etc/profile.d/mail.sh
 
 # for s-nail
-# echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
-# source /etc/profile.d/mail.sh
-# sudo apt-get install -y s-nail
-# echo "set folder=Maildir \nset record=+sent" >> /etc/s-nail.rc
-# echo 'init' | s-nail -s 'init' -Snorecord root
-# ls -R ~/Maildir
+sudo apt install s-nail
+sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
+mkdir -p ~/Maildir/cur
+mkdir -p ~/Maildir/new
+mkdir -p ~/Maildir/tmp
+chown -R root:root ~/Maildir
+chown -R 700 ~/Maildir
+echo 'init' | s-nail -s 'init' -Snorecord root
+
+
+
+
+
+
