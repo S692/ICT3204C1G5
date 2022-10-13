@@ -2,7 +2,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.boot_timeout = 1000
 
-  config.vm.define "ubuntu" do |target|
+  # Target container
+  config.vm.define "target" do |target|
 	target.vm.hostname = "target"
     # target.vm.network :private_network, type: "static", bridge: ["eth0"], ip: "172.17.0.2"
     target.vm.network "forwarded_port", guest: 6379, host: 6379
@@ -17,14 +18,17 @@ Vagrant.configure("2") do |config|
 	
   end
   
+  # Attacker container
   # config.vm.define "attk" do |attk|
-    # attk.vm.network :private_network, type: "dhcp", name: "attacker", bridge: "eth1"
+    # #attk.vm.network :private_network, type: "dhcp", name: "attacker", bridge: "eth1"
     # attk.vm.provider "docker" do |d|
       # d.image = "tknerr/baseimage-ubuntu:18.04"
       # d.has_ssh = true
       # d.remains_running = true
-    # attk.vm.provision :shell, :path => "attk_setup.sh"
     # end
+	
+	# attk.vm.provision :shell, :path => "attk_setup.sh"
+
   # end
 end
 

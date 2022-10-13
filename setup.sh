@@ -17,6 +17,7 @@ python3 rsyslogConfig.py
 sudo service rsyslog start
 sudo apt install iproute2 -y
 sudo apt -y install make gcc
+sudo apt-get install -y apt-utils
 
 # Redis
 mkdir ~/redis && cd ~/redis
@@ -60,7 +61,7 @@ sudo postconf -e "myorigin = /etc/mailname"
 sudo postconf -e "mydestination = \$myhostname, example.com, mail.example.com, localhost.example.com, localhost"
 sudo postconf -e "home_mailbox = Maildir/"
 sudo postconf -e "virtual_alias_maps = hash:/etc/postfix/virtual"
-echo "contact@example.com\troot \nadmin@example.com\troot" > /etc/postfix/virtual
+echo "contact@example.com root \nadmin@example.com root" > /etc/postfix/virtual
 echo "example.com" > /etc/mailname
 sudo postmap /etc/postfix/
 sudo postmap /etc/postfix/virtual
@@ -68,18 +69,22 @@ sudo postalias /etc/aliases
 sudo postfix start
 sudo postfix reload
 echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
+echo "export MAIL=~/Maildir" >> ~/.profile
+source ~/.profile
 source /etc/profile.d/mail.sh
 
 # for s-nail
 sudo apt install s-nail
-sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
+echo "set folder=Maildir" >> /etc/s-nail.rc
+echo "set record=+sent" >> /etc/s-nail.rc
+
+# sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
 mkdir -p ~/Maildir/cur
 mkdir -p ~/Maildir/new
 mkdir -p ~/Maildir/tmp
 chown -R root:root ~/Maildir
 chown -R 700 ~/Maildir
 echo 'init' | s-nail -s 'init' -Snorecord root
-
 
 
 
