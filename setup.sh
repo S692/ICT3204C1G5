@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing dependencies..."
-#
+
 sudo apt update -y
 sudo apt install build-essential -y
 sudo apt install curl -y
@@ -86,7 +86,13 @@ chown -R root:root ~/Maildir
 chown -R 700 ~/Maildir
 echo 'init' | s-nail -s 'init' -Snorecord root
 
-
-
-
-
+# for ELK stack and Packetbeat
+wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-8.3.3-amd64.deb
+sudo apt-get install libpcap0.8
+sudo dpkg -i packetbeat-8.3.3-amd64.deb
+sed -i 's/hosts: \["localhost\:9200"\]/hosts: \["172.18.0.4\:9200"\]/' /etc/packetbeat/packetbeat.yml
+sed -i 's/\#host\: "localhost\:5601"/host\: "172.18.0.4\:5601"/' /etc/packetbeat/packetbeat.yml
+packetbeat test output
+packetbeat setup -e
+sudo service packetbeat start
+sudo service packetbeat status 
