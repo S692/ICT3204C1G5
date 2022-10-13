@@ -11,8 +11,10 @@ Vagrant.configure("2") do |config|
       d.image = "tknerr/baseimage-ubuntu:18.04"
       d.has_ssh = true
       d.remains_running = true
-    target.vm.provision :shell, :path => "setup.sh"
     end
+	
+	target.vm.provision :shell, :path => "setup.sh"
+	
   end
   
   # config.vm.define "attk" do |attk|
