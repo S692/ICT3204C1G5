@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   # Target container
   config.vm.define "target" do |target|
-	  target.vm.hostname = "target"
+    target.vm.hostname = "target"
     # target.vm.network :private_network, type: "static", bridge: ["eth0"], ip: "172.17.0.2"
     target.vm.network :private_network, ip: "172.18.0.2"
     target.vm.network "forwarded_port", guest: 6379, host: 6379
@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
       d.has_ssh = true
       d.remains_running = true
     end
-	  target.vm.provision :shell, :path => "setup.sh"
+    target.vm.provision :shell, :path => "setup.sh"
   end
   
   # Attacker container
