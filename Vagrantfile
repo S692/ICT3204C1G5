@@ -1,17 +1,18 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define "ubuntu" do |target|
-  config.ssh.username = "root"
+  # config.ssh.username = "root"
+	target.vm.hostname = "target"
     target.vm.provider "docker" do |d|
       # d.image = "mreil/ubuntu-base:20.04.1"
-      d.image = "nineseconds/docker-vagrant"
-      d.has_ssh = true
+      # d.image = "nineseconds/docker-vagrant"
+	  d.image = "tknerr/baseimage-ubuntu:18.04"
       d.remains_running = true
-    # target.vm.provision :shell, :path => "setup.sh"
-    #target.vm.provision :shell, :path => "exploit.sh"
-    end
+	  d.has_ssh = true
+    target.vm.provision :shell, :path => "setup.sh"
+    # target.vm.provision :shell, :path => "exploit.sh"	
+	end
   end
- 
 end
 
 # attacker.vm.network "private_network", ip:"192.168.50.2"
