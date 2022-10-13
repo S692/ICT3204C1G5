@@ -1,21 +1,33 @@
 Vagrant.configure("2") do |config|
 
+  config.vm.boot_timeout = 1000
+
   config.vm.define "ubuntu" do |target|
-  # config.ssh.username = "root"
 	target.vm.hostname = "target"
+    # target.vm.network :private_network, type: "static", bridge: ["eth0"], ip: "172.17.0.2"
+    target.vm.network "forwarded_port", guest: 6379, host: 6379
+	
     target.vm.provider "docker" do |d|
-      # d.image = "mreil/ubuntu-base:20.04.1"
-      # d.image = "nineseconds/docker-vagrant"
-	  d.image = "tknerr/baseimage-ubuntu:18.04"
+      d.image = "tknerr/baseimage-ubuntu:18.04"
+      d.has_ssh = true
       d.remains_running = true
-	  d.has_ssh = true
     target.vm.provision :shell, :path => "setup.sh"
-    # target.vm.provision :shell, :path => "exploit.sh"	
-	end
+    end
   end
+  
+  # config.vm.define "attk" do |attk|
+    # attk.vm.network :private_network, type: "dhcp", name: "attacker", bridge: "eth1"
+    # attk.vm.provider "docker" do |d|
+      # d.image = "tknerr/baseimage-ubuntu:18.04"
+      # d.has_ssh = true
+      # d.remains_running = true
+    # attk.vm.provision :shell, :path => "attk_setup.sh"
+    # end
+  # end
 end
 
-# attacker.vm.network "private_network", ip:"192.168.50.2"
+#  docker network create --gateway 10.0.0.1 --subnet 10.0.0.0/16 attacker
+
 # config.vm.define "elk" do |elk|
 #   # elk.vm.network "private_network", ip:"192.168.50.3"
 #   elk.vm.provider "docker" do |d|
@@ -25,4 +37,3 @@ end
 #     d.remains_running = true
 #   end
 # end
-  
