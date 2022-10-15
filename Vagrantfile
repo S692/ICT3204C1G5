@@ -17,17 +17,16 @@ Vagrant.configure("2") do |config|
   end
   
   # Attacker container
-  # config.vm.define "attk" do |attk|
-    # #attk.vm.network :private_network, type: "dhcp", name: "attacker", bridge: "eth1"
-    # attk.vm.provider "docker" do |d|
-      # d.image = "tknerr/baseimage-ubuntu:18.04"
-      # d.has_ssh = true
-      # d.remains_running = true
-    # end
-	
-	# attk.vm.provision :shell, :path => "attk_setup.sh"
-
-  # end
+  config.vm.define "attk" do |attk|
+    #attk.vm.network :private_network, type: "dhcp", name: "attacker", bridge: "eth1"
+    attk.vm.network :private_network, ip: "172.18.0.3"
+    attk.vm.provider "docker" do |d|
+      d.image = "tknerr/baseimage-ubuntu:18.04"
+      d.has_ssh = true
+      d.remains_running = true
+    end
+    attk.vm.provision :shell, :path => "attk_setup.sh"
+  end
 
   # docker network create --gateway 10.0.0.1 --subnet 10.0.0.0/16 attacker
 
