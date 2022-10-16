@@ -30,6 +30,18 @@ Vagrant.configure("2") do |config|
 	# attk.vm.provision :shell, :path => "attk_setup.sh"
 
   # end
+	config.vm.define "elk" do |elk|
+      elk.vm.network "forwarded_port", guest: 5601, host: 5601, auto_correct: true
+      elk.vm.network "forwarded_port", guest: 9200, host: 9200, auto_correct: true
+      elk.vm.network "forwarded_port", guest: 5044, host: 5044, auto_correct: true
+      elk.vm.network "forwarded_port", guest: 9600, host: 9600, auto_correct: true
+      elk.vm.provider "docker" do |d|
+        d.build_dir = "."
+		d.create_args = ["-it"]
+        d.ports = ["5601:5601", "9200:9200", "5044:5044", "9600:9600"]
+        d.remains_running = true
+      end
+    end
 end
 
 #  docker network create --gateway 10.0.0.1 --subnet 10.0.0.0/16 attacker
@@ -43,3 +55,5 @@ end
 #     d.remains_running = true
 #   end
 # end
+
+

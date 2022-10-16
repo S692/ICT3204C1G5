@@ -72,6 +72,7 @@ echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/p
 echo "export MAIL=~/Maildir" >> ~/.profile
 source ~/.profile
 source /etc/profile.d/mail.sh
+. /etc/profile.d/mail.sh
 
 # for s-nail
 sudo apt install s-nail
