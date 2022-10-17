@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
       d.has_ssh = true
       d.remains_running = true
       d.name = "target"
+      d.link("elk:elk")
     end
     target.vm.provision :shell, :path => "setup.sh"
   end
@@ -44,3 +45,5 @@ Vagrant.configure("2") do |config|
     attk.vm.provision :shell, :path => "attk_setup.sh"
   end
 end
+
+# vagrant up --no-parallel

@@ -46,7 +46,6 @@ wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/system.yml -O /e
 wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/redis.yml -O /etc/filebeat/modules.d/redis.yml
 filebeat test output
 service filebeat start
-filebeat setup -e
 
 # Create new user... using the sucky useradd because idk how automate adduser's password
 sudo useradd -p $(openssl passwd -1 123) resch
@@ -115,3 +114,6 @@ packetbeat test output
 packetbeat setup -e
 sudo service packetbeat start
 sudo service packetbeat status 
+
+# run this last
+filebeat setup -e
