@@ -38,15 +38,15 @@ cd /root
 mkdir filebeat
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.3.3-amd64.deb
 dpkg -i filebeat-8.3.3-amd64.deb
-wget https://raw.githubusercontent.com/S692/ossas/main/filebeatConf.py
+wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/filebeatConf.py
 python3 filebeatConf.py
 filebeat modules enable system
 filebeat modules enable redis
-wget https://raw.githubusercontent.com/S692/ossas/main/system.yml -O /etc/filebeat/modules.d/system.yml
-wget https://raw.githubusercontent.com/S692/ossas/main/redis.yml -O /etc/filebeat/modules.d/redis.yml
-filebeat setup -e
+wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/system.yml -O /etc/filebeat/modules.d/system.yml
+wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/redis.yml -O /etc/filebeat/modules.d/redis.yml
 filebeat test output
 service filebeat start
+filebeat setup -e
 
 # Create new user... using the sucky useradd because idk how automate adduser's password
 sudo useradd -p $(openssl passwd -1 123) resch
