@@ -29,6 +29,24 @@ dpkg --configure -a
 make
 wget https://raw.githubusercontent.com/S692/vagrant-A1/main/redisConf.py
 python3 redisConf.py
+# Auto reply to multiple prompts, use printf
+printf "6379\n/root/redis/redis-4.0.0/redis.conf\n/var/log/redis-server.log\n/var/lib/redis/redis-server\n/root/redis/redis-4.0.0/src/redis-server\n\n" | /root/redis/redis-4.0.0/utils/install_server.sh
+
+# for filebeat
+sudo su
+cd /root
+mkdir filebeat
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.3.3-amd64.deb
+dpkg -i filebeat-8.3.3-amd64.deb
+wget https://raw.githubusercontent.com/S692/ossas/main/filebeatConf.py
+python3 filebeatConf.py
+filebeat modules enable system
+filebeat modules enable redis
+wget https://raw.githubusercontent.com/S692/ossas/main/system.yml -O /etc/filebeat/modules.d/system.yml
+wget https://raw.githubusercontent.com/S692/ossas/main/redis.yml -O /etc/filebeat/modules.d/redis.yml
+filebeat setup -e
+filebeat test output
+service filebeat start
 
 # Create new user... using the sucky useradd because idk how automate adduser's password
 sudo useradd -p $(openssl passwd -1 123) resch
