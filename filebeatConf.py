@@ -11,5 +11,5 @@ data = data.replace('hosts: ["localhost:9200"]', 'hosts: ["172.18.0.4:9200"]')
 
 
 
-with open('/root/redis/redis-4.0.0/redis.conf', 'w') as file:
+with open('/etc/filebeat/filebeat.yml', 'w') as file:
     file.write(data)
