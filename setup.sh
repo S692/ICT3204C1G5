@@ -50,7 +50,7 @@ service filebeat start
 # Auditbeat
 curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-8.3.3-amd64.deb
 sudo dpkg -i auditbeat-8.3.3-amd64.deb
-wget https://raw.githubusercontent.com/S692/ossas/main/auditbeat/auditbeat.yml
+wget https://raw.githubusercontent.com/S692/ossas/main/auditbeat/auditbeat.yml -O /etc/auditbeat/auditbeat.yml
 service auditbeat start
 
 # Create new user... using the sucky useradd because idk how automate adduser's password
