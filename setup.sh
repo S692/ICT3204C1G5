@@ -47,6 +47,12 @@ wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/redis.yml -O /et
 filebeat test output
 service filebeat start
 
+# Auditbeat
+curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-8.3.3-amd64.deb
+sudo dpkg -i auditbeat-8.3.3-amd64.deb
+wget https://raw.githubusercontent.com/S692/ossas/main/auditbeat/auditbeat.yml
+service auditbeat start
+
 # Create new user... using the sucky useradd because idk how automate adduser's password
 sudo useradd -p $(openssl passwd -1 123) resch
 mkdir /home/resch
@@ -117,3 +123,4 @@ sudo service packetbeat status
 
 # run this last
 filebeat setup -e
+auditbeat setup -e
