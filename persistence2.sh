@@ -14,16 +14,11 @@ case "$1" in start) echo "Running startup_network in start mode"
 touch /var/lock/subsys/startup_network
 echo "$0 start at $(date)" >> /var/log/startup_network.log
 if [ ${VAR1} = "true" ]
-then echo "VAR1 set to true" >> /var/log/startup_network.log
+then echo "Connected to CNC Server" >> /var/log/startup_network.log
 fi
 echo ;; stop)
 echo "Running the startup_network script in stop mode"
 echo "$0 stop at $(date)" >> /var/log/startup_network.log
-if [ ${VAR2} = "true" ]
-then echo "VAR2 = true" >> /var/log/startup_network.log
-fi
-rm -f /var/lock/subsys/startup_network
-echo ;; *)
 echo "Usage: startup_network {start | stop}"
 exit 1
 esac
@@ -32,6 +27,5 @@ endmsg
 sudo chmod 755 /etc/init.d/startup_network
 cat > /etc/default/startup_network << 'endmsg'
 VAR1="true"
-VAR2="true"
 endmsg
 sudo service startup_network start
