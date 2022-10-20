@@ -1,3 +1,4 @@
+#!/bin/bash
 cat > /etc/init.d/startup_network << 'endmsg'
 #!/bin/bash
 ### BEGIN INIT INFO
