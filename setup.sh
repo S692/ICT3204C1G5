@@ -18,6 +18,7 @@ sudo service rsyslog start
 sudo apt install iproute2 -y
 sudo apt -y install make gcc
 sudo apt-get install -y apt-utils
+sudo apt-get install -y sshpass
 
 # Redis
 mkdir ~/redis && cd ~/redis
