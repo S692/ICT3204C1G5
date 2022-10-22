@@ -14,50 +14,52 @@ rm -f fndd-stripped.txt
 #create the txt to sort the results
 touch fndd-stripped.txt
 #common file extensions; png, jpg, mp3, txt, pdf, doc, xls
-echo -e "----------------------------common file extensions----------------------------\n" >> fndd-stripped.txt
-echo -e "\nExtension Type 01: Documents \n" >> fndd-stripped.txt
+# echo -e "\nExtension Type 01: Documents \n" >> fndd-stripped.txt
 find /home/resch -name "*.doc" -printf "%p \n" >> fndd-stripped.txt
 find /home/resch -name "*.docx" -printf "%p \n" >> fndd-stripped.txt
 find /home/resch -name "*.pdf" -printf "%p \n" >> fndd-stripped.txt
-echo -e "\nExtension Type 02: Excel sheets \n" >> fndd-stripped.txt
-find /home/resch -name "*.xls" -or -name "*.xlsx" -or -name "*.csv" -printf "%p \n" >> fndd-stripped.txt
-echo -e "\nExtension Type 03: Media \n" >> fndd-stripped.txt
+find /home/resch -name "*.pptx" -printf "%p \n" >> fndd-stripped.txt
+# echo -e "\nExtension Type 02: Excel sheets \n" >> fndd-stripped.txt
+find /home/resch -name "*.xls" -printf "%p \n" >> fndd-stripped.txt
+find /home/resch -name "*.xlsx" -printf "%p \n" >> fndd-stripped.txt
+find /home/resch -name "*.csv" -printf "%p \n" >> fndd-stripped.txt
+# echo -e "\nExtension Type 03: Media \n" >> fndd-stripped.txt
 find /home/resch -name "*.png" -printf "%p \n" >> fndd-stripped.txt
 find /home/resch -name "*.jpg" -printf "%p \n" >> fndd-stripped.txt
 find /home/resch -name "*.jpeg" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name"*.mp3" -printf "%p \n" >> fndd-stripped.txt
-echo -e "\nExtension Type 04: txt \n" >> fndd-stripped.txt
+find /home/resch -name "*.mp3" -printf "%p \n" >> fndd-stripped.txt
+# echo -e "\nExtension Type 04: txt \n" >> fndd-stripped.txt
 find /home/resch -name "*.txt" -printf "%p \n" >> fndd-stripped.txt
 
 
-echo -e "----------------------------executables files with 700 permission in home dir----------------------------\n" >> fndd-stripped.txt
+# echo -e "----------------------------executables files with 700 permission in home dir----------------------------\n" >> fndd-stripped.txt
 find /home/ -type f -executable -perm /700 -printf "%p \n" >> fndd-stripped.txt
 
 #/etc/profile, ~/.bash_profile, ~/.bash_login, ~/.profile. /home/user/.bashrc, /etc/bash.bashrc, /etc/profile.d/.
-echo -e "----------------------------files in bash----------------------------\n" >> fndd-stripped.txt
+# echo -e "----------------------------files in bash----------------------------\n" >> fndd-stripped.txt
 find ~/ -name ".bash*" -printf "%p \n" >> fndd-stripped.txt
 find ~/ -name ".profile*" -printf "%p \n" >> fndd-stripped.txt
 
 #backup folder 
-echo -e "----------------------------backups folder----------------------------\n" >> fndd-stripped.txt
+# echo -e "----------------------------backups folder----------------------------\n" >> fndd-stripped.txt
 ls -R /var/backups/* >> fndd-stripped.txt
 
 #.ssh folder, if there are any other ssh keys than the one planted for initial access
-echo -e "-----------------------------.ssh backup key ls----------------------------\n" >> fndd-stripped.txt
-ls -R ~/.ssh* >> fndd-stripped.txt
+# echo -e "-----------------------------.ssh backup key ls----------------------------\n" >> fndd-stripped.txt
+ls -R ~/.ssh/* >> fndd-stripped.txt
 
 #check location and if /etc/shaodow and /etc/passwd exists
-echo -e "----------------------------shadow files and config with root permission---------------------------\n" >> fndd-stripped.txt
+# echo -e "----------------------------shadow files and config with root permission---------------------------\n" >> fndd-stripped.txt
 find /etc/ -group shadow -printf "%p \n" >> fndd-stripped.txt
 find /etc/ -user root -name "*.conf" -printf "%p \n" >> fndd-stripped.txt
 find /etc/ -user resch -name "*.conf" -printf "%p \n" >> fndd-stripped.txt
 
 #hidden folders
-echo -e "----------------------------all hidden file/folder----------------------------\n" >> fndd-stripped.txt
+# echo -e "----------------------------all hidden file/folder----------------------------\n" >> fndd-stripped.txt
 find / -name ".*" -maxdepth 5 2> /dev/null >> fndd-stripped.txt
 
 
-echo -e "----------------------------folder created for PEexploit----------------------------\n" >> fndd-stripped.txt
+# echo -e "----------------------------folder created for PEexploit----------------------------\n" >> fndd-stripped.txt
 ls -R /var/research/* >> fndd-stripped.txt
 
 echo -e "\n[End of File and Directory Discovery.]\n"
