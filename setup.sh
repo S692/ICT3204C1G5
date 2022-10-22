@@ -4,6 +4,10 @@ echo "Installing dependencies..."
 
 sudo apt update -y
 sudo apt install build-essential -y
+sudo apt install -y rsyslog
+wget https://raw.githubusercontent.com/S692/vagrant-A1/main/rsyslogConfig.py
+python3 rsyslogConfig.py
+sudo service rsyslog start
 sudo apt install curl -y
 sudo apt-get -y install net-tools
 sudo apt-get install -y iputils-ping
@@ -11,16 +15,24 @@ sudo apt-get -y install software-properties-common
 sudo apt install -y less
 sudo apt install -y unzip
 sudo apt install -y nano
-sudo apt install -y rsyslog
-sudo apt install -y python3-pip
-wget https://raw.githubusercontent.com/S692/vagrant-A1/main/rsyslogConfig.py
-python3 rsyslogConfig.py
-sudo service rsyslog start
 sudo apt install iproute2 -y
 sudo apt -y install make gcc
 sudo apt-get install -y apt-utils
 sudo apt-get install -y sshpass
-sudo apt-get install -y rsync
+sudo apt install git -y
+
+# uninstall sudo for PE
+apt purge sudo
+export SUDO_FORCE_REMOVE=yes
+
+# install sudo 1.8.27 for PE
+mkdir ~/sudo
+cd ~/sudo
+wget http://www.sudo.ws/dist/sudo-1.8.27.tar.gz
+tar -xf sudo-1.8.27.tar.gz
+cd sudo-1.8.27
+./configure --prefix=/usr --libexecdir=/usr/lib --with-secure-path --with-all-insults --with-env-editor --docdir=/usr/share/doc/sudo-1.8.27 --with-passprompt="[sudo] password for %p: " && make
+make install && ln -sfv libsudo_util.so.0.0.0 /usr/lib/sudo/libsudo_util.so.0
 
 # Redis
 mkdir ~/redis && cd ~/redis
