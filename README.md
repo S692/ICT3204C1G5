@@ -42,3 +42,10 @@ docker stop <container name>
 
 https://github.com/tknerr/vagrant-docker-baseimages
 https://www.vagrantup.com/docs/provisioning/shell#inline-scripts
+
+---
+## Rsyslog Config in target VM
+### Rsyslog default rules: 
+/etc/rsyslog.d/50-default.conf
+### syslog config
+/etc/rsyslog.conf
