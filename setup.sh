@@ -103,6 +103,22 @@ sudo apt install s-nail
 echo "set folder=Maildir" >> /etc/s-nail.rc
 echo "set record=+sent" >> /etc/s-nail.rc
 
+# to plant dummy files in target for file and folder discovery 
+mkdir /home/resch/3204ResearchMaterials
+cd /home/resch/3204ResearchMaterials
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
+
 # sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
 mkdir -p ~/Maildir/cur
 mkdir -p ~/Maildir/new
