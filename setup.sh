@@ -104,6 +104,13 @@ sudo apt install s-nail
 echo "set folder=Maildir" >> /etc/s-nail.rc
 echo "set record=+sent" >> /etc/s-nail.rc
 
+# to plant dummy emails in target for collection
+cd /root/Maildir
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1645459365.VceI9947G467430.target
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666455338.VceI992cM851950.target
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
+wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666459365.VceI9947M833420.target
+
 # to plant dummy files in target for file and folder discovery 
 mkdir /home/resch/3204ResearchMaterials
 cd /home/resch/3204ResearchMaterials
