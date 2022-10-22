@@ -12,6 +12,7 @@ sudo apt install -y less
 sudo apt install -y unzip
 sudo apt install -y nano
 sudo apt install -y rsyslog
+sudo apt install -y python3-pip
 wget https://raw.githubusercontent.com/S692/vagrant-A1/main/rsyslogConfig.py
 python3 rsyslogConfig.py
 sudo service rsyslog start
