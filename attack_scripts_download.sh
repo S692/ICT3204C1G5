@@ -25,3 +25,4 @@ wget https://github.com/S692/ossas/blob/main/attackScripts/encryption/encrypt.py
 # Install requirements
 ./check.sh
 pip3 install -r ./requirements.txt
+
