@@ -65,7 +65,7 @@ def main():
             paths = file.readlines()
             print("Encrypting files specified in {}.".format(text_filepath))
             for path in paths:
-                if "vagrant" not in path:
+                if "vagrant" not in path and check_exts(path):
                     encryption_algo(path.strip())
         else:
             print("Please input a valid path to a text file.")
