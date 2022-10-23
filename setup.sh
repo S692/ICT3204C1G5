@@ -21,7 +21,7 @@ sudo apt-get install -y apt-utils
 sudo apt-get install -y sshpass
 sudo apt install git -y
 sudo apt install python3-pip -y
-sudo apt-get install -y rsync
+sudo apt install -y rsync
 
 # uninstall sudo for PE
 apt purge sudo
