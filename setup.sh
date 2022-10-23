@@ -20,6 +20,7 @@ sudo apt -y install make gcc
 sudo apt-get install -y apt-utils
 sudo apt-get install -y sshpass
 sudo apt install git -y
+sudo apt install python3-pip -y
 
 # uninstall sudo for PE
 apt purge sudo
