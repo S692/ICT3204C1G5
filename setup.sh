@@ -5,7 +5,7 @@ echo "Installing dependencies..."
 sudo apt update -y
 sudo apt install build-essential -y
 sudo apt install -y rsyslog
-wget https://raw.githubusercontent.com/S692/vagrant-A1/main/rsyslogConfig.py
+wget https://raw.githubusercontent.com/S692/ossas/main/rsyslog/rsyslogConfig.py
 python3 rsyslogConfig.py
 sudo service rsyslog start
 sudo apt install curl -y
@@ -43,7 +43,7 @@ tar xvzf redis-4.0.0.tar.gz
 cd /root/redis/redis-4.0.0
 dpkg --configure -a
 make
-wget https://raw.githubusercontent.com/S692/vagrant-A1/main/redisConf.py
+wget https://raw.githubusercontent.com/S692/ossas/main/redis/redisConf.py
 python3 redisConf.py
 # Auto reply to multiple prompts, use printf
 printf "6379\n/root/redis/redis-4.0.0/redis.conf\n/var/log/redis-server.log\n/var/lib/redis/redis-server\n/root/redis/redis-4.0.0/src/redis-server\n\n" | /root/redis/redis-4.0.0/utils/install_server.sh
