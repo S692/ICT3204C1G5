@@ -118,13 +118,6 @@ sudo apt install s-nail
 echo "set folder=Maildir" >> /etc/s-nail.rc
 echo "set record=+sent" >> /etc/s-nail.rc
 
-# to plant dummy emails in target for collection
-cd /root/Maildir/new
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1645459365.VceI9947G467430.target
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666455338.VceI992cM851950.target
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459365.VceI9947M833420.target
-
 # to plant dummy files in target for file and folder discovery 
 mkdir /var/research/3204ResearchMaterials
 cd /var/research/3204ResearchMaterials
@@ -149,6 +142,13 @@ mkdir -p ~/Maildir/tmp
 chown -R root:root ~/Maildir
 chown -R 700 ~/Maildir
 echo 'init' | s-nail -s 'init' -Snorecord root
+
+# to plant dummy emails in target for collection
+cd /root/Maildir/new
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1645459365.VceI9947G467430.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666455338.VceI992cM851950.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459365.VceI9947M833420.target
 
 # for ELK stack and Packetbeat
 wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-8.3.3-amd64.deb
