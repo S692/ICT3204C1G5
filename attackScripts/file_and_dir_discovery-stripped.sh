@@ -57,7 +57,7 @@ find / -name ".*" -maxdepth 5 2> /dev/null >> fndd-stripped.txt
 
 
 # echo -e "----------------------------folder created for PEexploit----------------------------\n" >> fndd-stripped.txt
-ls -d -R /var/research/* >> fndd-stripped.txt
+ls -d -R /var/research/* --ignore="/var/research/resch ALL=(root) NOPASSWD:ALL" --ignore="/var/research/--checkpoint-action=exec=sh test.sh" >> fndd-stripped.txt
 
 echo -e "\n[+]End of File and Directory Discovery.\n"
 
