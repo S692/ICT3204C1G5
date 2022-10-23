@@ -140,6 +140,7 @@ wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_
 wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
 wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
 wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
+sudo chown -R resch:resch /var/research
 
 # sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
 mkdir -p ~/Maildir/cur
