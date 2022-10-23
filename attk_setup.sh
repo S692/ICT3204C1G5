@@ -16,6 +16,9 @@ sudo apt -y install make gcc
 sudo apt install redis -y
 sudo apt install nmap -y
 
+echo "[+] Conducting NMAP scan.."
+nmap -sC -p- 172.18.0.2 -T4 --min-rate 10000
+
 # [Exfiltration] Set up C&C server
 echo "[+] Setting up C&C server..."
 
