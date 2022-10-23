@@ -119,26 +119,26 @@ echo "set record=+sent" >> /etc/s-nail.rc
 
 # to plant dummy emails in target for collection
 cd /root/Maildir/new
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1645459365.VceI9947G467430.target
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666455338.VceI992cM851950.target
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666459365.VceI9947M833420.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1645459365.VceI9947G467430.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666455338.VceI992cM851950.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459365.VceI9947M833420.target
 
 # to plant dummy files in target for file and folder discovery 
-mkdir /var/research/3204ResearchMaterials
-cd /var/research/3204ResearchMaterials
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
+mkdir /home/resch/3204ResearchMaterials
+cd /home/resch/3204ResearchMaterials
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
 
 # sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
 mkdir -p ~/Maildir/cur
