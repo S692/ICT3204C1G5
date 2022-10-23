@@ -15,25 +15,25 @@ rm -f fndd-stripped.txt
 touch fndd-stripped.txt
 #common file extensions; png, jpg, mp3, txt, pdf, doc, xls
 # echo -e "\nExtension Type 01: Documents \n" >> fndd-stripped.txt
-find /home/resch -name "*.doc" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.docx" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.pdf" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.pptx" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.doc" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.docx" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.pdf" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.pptx" -printf "%p \n" >> fndd-stripped.txt
 # echo -e "\nExtension Type 02: Excel sheets \n" >> fndd-stripped.txt
-find /home/resch -name "*.xls" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.xlsx" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.csv" -printf "%p \n" >> fndd-stripped.txt
+find /-name "*.xls" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.xlsx" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.csv" -printf "%p \n" >> fndd-stripped.txt
 # echo -e "\nExtension Type 03: Media \n" >> fndd-stripped.txt
-find /home/resch -name "*.png" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.jpg" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.jpeg" -printf "%p \n" >> fndd-stripped.txt
-find /home/resch -name "*.mp3" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.png" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.jpg" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.jpeg" -printf "%p \n" >> fndd-stripped.txt
+find / -name "*.mp3" -printf "%p \n" >> fndd-stripped.txt
 # echo -e "\nExtension Type 04: txt \n" >> fndd-stripped.txt
-find /home/resch -name "*.txt" -printf "%p \n" >> fndd-stripped.txt
+find /  -name "*.txt" -printf "%p \n" >> fndd-stripped.txt
 
 
 # echo -e "----------------------------executables files with 700 permission in home dir----------------------------\n" >> fndd-stripped.txt
-find /home/ -type f -executable -perm /700 -printf "%p \n" >> fndd-stripped.txt
+find / -type f -executable -perm /700 -printf "%p \n" >> fndd-stripped.txt
 
 #/etc/profile, ~/.bash_profile, ~/.bash_login, ~/.profile. /home/user/.bashrc, /etc/bash.bashrc, /etc/profile.d/.
 # echo -e "----------------------------files in bash----------------------------\n" >> fndd-stripped.txt
