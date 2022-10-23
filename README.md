@@ -4,7 +4,7 @@ Go to some folder u want to store the config and do "vagrant init"
 From the same folder, run the container and other commands
 
 ## Some vagrant commands
-- vagrant up --provider=docker
+- vagrant up --no-parallel
 - vagrant halt
 - vagrant destroy
 - vagrant ssh <name>
