@@ -126,7 +126,7 @@ wget https://github.com/S692/ossas/blob/main/dummy-files-for-email/1666459365.Vc
 
 # to plant dummy files in target for file and folder discovery 
 mkdir /var/research/3204ResearchMaterials
-cd /home/research/3204ResearchMaterials
+cd /var/research/3204ResearchMaterials
 wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
 wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
 wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
