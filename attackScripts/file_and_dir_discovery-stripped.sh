@@ -42,7 +42,7 @@ find ~/ -name ".profile*" -printf "%p\n" >> fndd-stripped.txt
 
 #backup folder 
 # echo -e "----------------------------backups folder----------------------------\n" >> fndd-stripped.txt
-ls -R /var/backups/* >> fndd-stripped.txt
+ls -d -R /var/backups/* >> fndd-stripped.txt
 
 
 #check location and if /etc/shaodow and /etc/passwd exists
@@ -57,7 +57,7 @@ find / -name ".*" -maxdepth 5 2> /dev/null >> fndd-stripped.txt
 
 
 # echo -e "----------------------------folder created for PEexploit----------------------------\n" >> fndd-stripped.txt
-ls -R /var/research/* >> fndd-stripped.txt
+ls -d -R /var/research/* >> fndd-stripped.txt
 
 echo -e "\n[+]End of File and Directory Discovery.\n"
 
