@@ -16,26 +16,26 @@ touch fndd.txt
 #common file extensions; png, jpg, mp3, txt, pdf, doc, xls
 echo -e "----------------------------common file extensions----------------------------\n" >> fndd.txt
 eecho -e "\nExtension Type 01: Documents" >> fndd.txt
-find /home/resch -name "*.doc" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.docx" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.pdf" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.pptx" -printf "%a %p \n" >> fndd.txt
+find / -name "*.doc" -printf "%a %p \n" >> fndd.txt
+find / -name "*.docx" -printf "%a %p \n" >> fndd.txt
+find / -name "*.pdf" -printf "%a %p \n" >> fndd.txt
+find / -name "*.pptx" -printf "%a %p \n" >> fndd.txt
 echo -e "\nExtension Type 02: Excel sheets" >> fndd.txt
-find /home/resch -name "*.xls" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.xlsx" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.csv" -printf "%a %p \n" >> fndd.txt
+find / -name "*.xls" -printf "%a %p \n" >> fndd.txt
+find / -name "*.xlsx" -printf "%a %p \n" >> fndd.txt
+find / -name "*.csv" -printf "%a %p \n" >> fndd.txt
 echo -e "\nExtension Type 03: Media" >> fndd.txt
-find /home/resch -name "*.png" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.jpg" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.jpeg" -printf "%a %p \n" >> fndd.txt
-find /home/resch -name "*.mp3" -printf "%a %p \n" >> fndd.txt
+find / -name "*.png" -printf "%a %p \n" >> fndd.txt
+find / -name "*.jpg" -printf "%a %p \n" >> fndd.txt
+find / -name "*.jpeg" -printf "%a %p \n" >> fndd.txt
+find / -name "*.mp3" -printf "%a %p \n" >> fndd.txt
 echo -e "\nExtension Type 04: txt" >> fndd.txt
-find /home/resch -name "*.txt" -printf "%a %p \n" >> fndd.txt
+find / -name "*.txt" -printf "%a %p \n" >> fndd.txt
 
 
 
 echo -e "\n \n----------------------------executables files with 700 permission in home dir----------------------------\n" >> fndd.txt
-find /home/ -type f -executable -perm /700 -printf "%a %p \n" >> fndd.txt
+find / -type f -executable -perm /700 -printf "%a %p \n" >> fndd.txt
 
 #/etc/profile, ~/.bash_profile, ~/.bash_login, ~/.profile. /home/user/.bashrc, /etc/bash.bashrc, /etc/profile.d/.
 echo -e "\n \n----------------------------files in bash and profile----------------------------" >> fndd.txt
