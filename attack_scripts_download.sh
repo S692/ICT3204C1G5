@@ -1,5 +1,4 @@
 #!/bin/bash
-
 cd /home/resch
 # Create hidden folder
 mkdir .scripts
@@ -23,7 +22,6 @@ chmod -R +x /home/resch/.scripts
 # Other files
 wget https://github.com/S692/ossas/blob/main/attackScripts/encryption/requirements.txt
 wget https://github.com/S692/ossas/blob/main/attackScripts/encryption/encrypt.py
-
 # Install requirements
 ./check.sh
 pip3 install -r ./requirements.txt
