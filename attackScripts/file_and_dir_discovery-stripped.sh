@@ -44,9 +44,6 @@ find ~/ -name ".profile*" -printf "%p\n" >> fndd-stripped.txt
 # echo -e "----------------------------backups folder----------------------------\n" >> fndd-stripped.txt
 ls -R /var/backups/* >> fndd-stripped.txt
 
-#.ssh folder, if there are any other ssh keys than the one planted for initial access
-# echo -e "-----------------------------.ssh backup key ls----------------------------\n" >> fndd-stripped.txt
-ls -R ~/.ssh/* >> fndd-stripped.txt
 
 #check location and if /etc/shaodow and /etc/passwd exists
 # echo -e "----------------------------shadow files and config with root permission---------------------------\n" >> fndd-stripped.txt
