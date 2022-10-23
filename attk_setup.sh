@@ -11,8 +11,6 @@ sudo apt-get -y install software-properties-common
 sudo apt install -y less
 sudo apt install -y unzip
 sudo apt install -y nano
-# sudo apt install -y rsyslog
-# sudo service rsyslog start
 sudo apt install iproute2 -y
 sudo apt -y install make gcc
 sudo apt install redis -y
