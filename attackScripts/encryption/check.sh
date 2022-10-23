@@ -22,9 +22,5 @@ else
 	echo "pip3 is already installed."
 fi
 
-# Install python modules
-# Change the directory accordingly
-pip3 install -r /vagrant/encryption/requirements.txt
-
 
 

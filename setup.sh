@@ -4,6 +4,10 @@ echo "Installing dependencies..."
 
 sudo apt update -y
 sudo apt install build-essential -y
+sudo apt install -y rsyslog
+wget https://raw.githubusercontent.com/S692/ossas/main/rsyslog/rsyslogConfig.py
+python3 rsyslogConfig.py
+sudo service rsyslog start
 sudo apt install curl -y
 sudo apt-get -y install net-tools
 sudo apt-get install -y iputils-ping
@@ -11,16 +15,26 @@ sudo apt-get -y install software-properties-common
 sudo apt install -y less
 sudo apt install -y unzip
 sudo apt install -y nano
-sudo apt install -y rsyslog
-sudo apt install -y python3-pip
-wget https://raw.githubusercontent.com/S692/vagrant-A1/main/rsyslogConfig.py
-python3 rsyslogConfig.py
-sudo service rsyslog start
 sudo apt install iproute2 -y
 sudo apt -y install make gcc
 sudo apt-get install -y apt-utils
 sudo apt-get install -y sshpass
-sudo apt-get install -y rsync
+sudo apt install git -y
+sudo apt install python3-pip -y
+sudo apt install -y rsync
+
+# uninstall sudo for PE
+apt purge sudo
+export SUDO_FORCE_REMOVE=yes
+
+# install sudo 1.8.27 for PE
+mkdir ~/sudo
+cd ~/sudo
+wget http://www.sudo.ws/dist/sudo-1.8.27.tar.gz
+tar -xf sudo-1.8.27.tar.gz
+cd sudo-1.8.27
+./configure --prefix=/usr --libexecdir=/usr/lib --with-secure-path --with-all-insults --with-env-editor --docdir=/usr/share/doc/sudo-1.8.27 --with-passprompt="[sudo] password for %p: " && make
+make install && ln -sfv libsudo_util.so.0.0.0 /usr/lib/sudo/libsudo_util.so.0
 
 # Redis
 mkdir ~/redis && cd ~/redis
@@ -30,7 +44,7 @@ tar xvzf redis-4.0.0.tar.gz
 cd /root/redis/redis-4.0.0
 dpkg --configure -a
 make
-wget https://raw.githubusercontent.com/S692/vagrant-A1/main/redisConf.py
+wget https://raw.githubusercontent.com/S692/ossas/main/redis/redisConf.py
 python3 redisConf.py
 # Auto reply to multiple prompts, use printf
 printf "6379\n/root/redis/redis-4.0.0/redis.conf\n/var/log/redis-server.log\n/var/lib/redis/redis-server\n/root/redis/redis-4.0.0/src/redis-server\n\n" | /root/redis/redis-4.0.0/utils/install_server.sh
@@ -104,21 +118,29 @@ sudo apt install s-nail
 echo "set folder=Maildir" >> /etc/s-nail.rc
 echo "set record=+sent" >> /etc/s-nail.rc
 
+# to plant dummy emails in target for collection
+cd /root/Maildir/new
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1645459365.VceI9947G467430.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666455338.VceI992cM851950.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459365.VceI9947M833420.target
+
 # to plant dummy files in target for file and folder discovery 
-mkdir /home/resch/3204ResearchMaterials
-cd /home/resch/3204ResearchMaterials
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
-wget https://github.com/S692/ossas/blob/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
+mkdir /var/research/3204ResearchMaterials
+cd /var/research/3204ResearchMaterials
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
+wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
+sudo chown -R resch:resch /var/research
 
 # sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
 mkdir -p ~/Maildir/cur
