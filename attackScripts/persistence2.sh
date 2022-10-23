@@ -1,6 +1,7 @@
 #!/bin/bash
 cat > /etc/init.d/startup_network << 'endmsg'
 #!/bin/bash
+
 ### BEGIN INIT INFO
 # Provides:          startup_network
 # Required-Start: $network
@@ -8,7 +9,9 @@ cat > /etc/init.d/startup_network << 'endmsg'
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 ### END INIT INFO
+
 # Source function library
+
 . /etc/default/startup_network
 case "$1" in start) echo "Running startup_network in start mode"
 touch /var/lock/subsys/startup_network
