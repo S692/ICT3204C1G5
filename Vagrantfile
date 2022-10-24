@@ -16,6 +16,10 @@ Vagrant.configure("2") do |config|
       d.remains_running = true
       d.name = "elk"
     end
+	
+	elk.trigger.after :up, :provision do |trigger|
+		trigger.run = {inline: "./trigger.sh"}
+	end
   end
 
   # Target container
