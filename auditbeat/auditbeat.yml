@@ -47,7 +47,7 @@ auditbeat.modules:
   - /sbin
   - /usr/sbin
   - /etc
-  - /var
+  - /var/backups
   - /var/research
   scan_at_start: true
   scan_rate_per_sec: 50 MiB
