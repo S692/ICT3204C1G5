@@ -49,6 +49,7 @@ auditbeat.modules:
   - /etc
   - /var/backups
   - /var/research
+  - /etc/crontab
   scan_at_start: true
   scan_rate_per_sec: 50 MiB
   max_file_size: 100 MiB
