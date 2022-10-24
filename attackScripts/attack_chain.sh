@@ -14,7 +14,6 @@ echo "[+] Persistence ended, do vagrant up --provision once everything is done..
 echo "[+] Starting file discovery..."
 # Start File discovery
 ./file_and_dir_discovery.sh
-./file_and_dir_discovery-stripped.sh
 echo "[+] File discovery ended..."
 echo "[+] Starting collection..."
 # Start Collection
