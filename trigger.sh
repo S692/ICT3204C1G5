@@ -4,7 +4,7 @@ echo ">>>>  Right before SG initialization <<<<"
 # use while loop to check if elasticsearch is running 
 while true
 do
-    netstat -uplnt | grep :9300 | grep LISTEN > /dev/null
+    netstat -uplnt | grep :9200 | grep LISTEN > /dev/null
     verifier=$?
     if [ 0 = $verifier ]
         then
