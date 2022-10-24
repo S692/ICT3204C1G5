@@ -47,13 +47,15 @@ auditbeat.modules:
   - /sbin
   - /usr/sbin
   - /etc
+  - /var/backups
   - /var/research
-  - /var/research/3204ResearchMaterials
+  - /etc/crontab
+  - /home/resch
   scan_at_start: true
   scan_rate_per_sec: 50 MiB
   max_file_size: 100 MiB
   hash_types: [sha1]
-  recursive: false
+  recursive: true
 
 - module: system
   datasets:
