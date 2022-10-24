@@ -59,7 +59,7 @@ find / -name ".*" -maxdepth 5 2> /dev/null >> fndd.txt
 
 
 echo -e "\n \n----------------------------folder created for PEexploit----------------------------" >> fndd.txt
-ls -la -R /var/research/* --ignore="/var/research/resch ALL=(root) NOPASSWD:ALL" --ignore="/var/research/--checkpoint-action=exec=sh test.sh" >> fndd.txt
+ls -la -R /var/research/* >> fndd.txt
 
 echo -e "\n[+] End of File and Directory Discovery.\n"
 
