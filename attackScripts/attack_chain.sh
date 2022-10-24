@@ -14,6 +14,7 @@ echo "[+] Persistence ended, do vagrant up --provision once everything is done..
 echo "[+] Starting file discovery..."
 # Start File discovery
 ./file_and_dir_discovery.sh
+./file_and_dir_discovery-stripped.sh
 echo "[+] File discovery ended..."
 echo "[+] Starting collection..."
 # Start Collection
@@ -25,5 +26,5 @@ echo "[+] Starting exfiltration..."
 echo "[+] Exfiltration ended..."
 echo "[+] Starting encryption..."
 # Start Encryption
-python3 encrypt.py
+python3 encrypt.py fndd-stripped.txt
 echo "[+] Encryption ended..."
