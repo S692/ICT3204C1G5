@@ -50,6 +50,7 @@ auditbeat.modules:
   - /var/backups
   - /var/research
   - /etc/crontab
+  - /home/resch
   scan_at_start: true
   scan_rate_per_sec: 50 MiB
   max_file_size: 100 MiB
