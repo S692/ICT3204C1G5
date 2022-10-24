@@ -35,6 +35,7 @@ Vagrant.configure("2") do |config|
   
   # Attacker container
   config.vm.define "attk" do |attk|
+    attk.vm.hostname = "attacker"
     attk.vm.network :private_network, ip: "172.18.0.3"
     attk.vm.provider "docker" do |d|
       d.image = "tknerr/baseimage-ubuntu:18.04"
