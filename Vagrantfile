@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
       d.name = "target"
       d.link("elk:elk")
     end
-    target.vm.provision :shell, :path => "setup.sh"
+    target.vm.provision :shell, :path => "Gp5_setup.sh"
   end
   
   # Attacker container
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
       d.remains_running = true
       d.name = "attk"
     end
-    attk.vm.provision :shell, :path => "attk_setup.sh"
+    attk.vm.provision :shell, :path => "Gp5_attk_setup.sh"
   end
 end
 
