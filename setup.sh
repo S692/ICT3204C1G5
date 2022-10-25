@@ -22,6 +22,7 @@ sudo apt-get install -y sshpass
 sudo apt install git -y
 sudo apt install python3-pip -y
 sudo apt install -y rsync
+sudo apt-get install -y jq
 
 # uninstall sudo for PE
 apt purge sudo
@@ -61,12 +62,28 @@ filebeat modules enable system
 filebeat modules enable redis
 wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/system.yml -O /etc/filebeat/modules.d/system.yml
 wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/redis.yml -O /etc/filebeat/modules.d/redis.yml
+# Add new lines into filebeat
+echo "http.enabled: true" >> /etc/filebeat/filebeat.yml
+echo "http.port: 5066" >> /etc/filebeat/filebeat.yml
+echo "monitoring.enabled: true" >> /etc/filebeat/filebeat.yml
+curl -XGET '172.18.0.4:9200' > cluster_uuid.json
+jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
+cluster_uuid=$(cat cluster_uuid.txt)
+echo "monitoring.cluster_uuid: $cluster_uuid" >> /etc/auditbeat/auditbeat.yml
 filebeat test output
 
 # Auditbeat
 curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-8.3.3-amd64.deb
 sudo dpkg -i auditbeat-8.3.3-amd64.deb
 wget https://raw.githubusercontent.com/S692/ossas/main/auditbeat/auditbeat.yml -O /etc/auditbeat/auditbeat.yml
+# Add new lines into Auditbeat
+echo "http.enabled: true" >> /etc/auditbeat/auditbeat.yml
+echo "http.port: 5067" >> /etc/auditbeat/auditbeat.yml
+echo "monitoring.enabled: true" >> /etc/auditbeat/auditbeat.yml
+curl -XGET '172.18.0.4:9200' > cluster_uuid.json
+jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
+cluster_uuid=$(cat cluster_uuid.txt)
+echo "monitoring.cluster_uuid: $cluster_uuid" >> /etc/auditbeat/auditbeat.yml
 
 
 # Create new user... using the sucky useradd because idk how automate adduser's password
@@ -156,13 +173,30 @@ sudo apt-get install libpcap0.8
 sudo dpkg -i packetbeat-8.3.3-amd64.deb
 sed -i 's/hosts: \["localhost\:9200"\]/hosts: \["172.18.0.4\:9200"\]/' /etc/packetbeat/packetbeat.yml
 sed -i 's/\#host\: "localhost\:5601"/host\: "172.18.0.4\:5601"/' /etc/packetbeat/packetbeat.yml
+# Add new lines into Packetbeat
+echo "http.enabled: true" >> /etc/packetbeat/packetbeat.yml
+echo "http.port: 5068" >> /etc/packetbeat/packetbeat.yml
+echo "monitoring.enabled: true" >> /etc/packetbeat/packetbeat.yml
+curl -XGET '172.18.0.4:9200' > cluster_uuid.json
+jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
+cluster_uuid=$(cat cluster_uuid.txt)
+echo "monitoring.cluster_uuid: $cluster_uuid" >> /etc/packetbeat/packetbeat.yml
 packetbeat test output
 packetbeat setup -e
 sudo service packetbeat start
-sudo service packetbeat status 
+sudo service packetbeat status
+
+# Install Metricbeat
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.3.3-amd64.deb
+sudo dpkg -i metricbeat-8.3.3-amd64.deb
+metricbeat modules enable beat-xpack
+wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/metricbeat.yml -O /etc/metricbeat/metricbeat.yml
+wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/modules.d/beat-xpack.yml -O /etc/metricbeat/modules.d/beat-xpack.yml
 
 # run this last
 service filebeat start
 service auditbeat start
+service metricbeat start
 filebeat setup -e
 auditbeat setup -e
+metricbeat setup -e

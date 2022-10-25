@@ -1,0 +1,13 @@
+# Module: beat
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat/8.3/metricbeat-module-beat.html
+
+- module: beat
+  metricsets:
+    - stats
+    - state
+  xpack.enabled: true
+  period: 10s
+  hosts: ["http://127.0.0.1:5066", "http://127.0.0.1:5067", "http://127.0.0.1:5068"]
+  #username: "user"
+  #password: "secret"
+
