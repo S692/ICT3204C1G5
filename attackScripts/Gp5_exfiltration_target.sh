@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Run PEexploit.sh located at /home/resch to ensure that privilege escalation has happened and the current user is root
+# Run Gp5_PEexploit.sh located at /home/resch to ensure that privilege escalation has happened and the current user is root
 
 # manual steps
-# /home/resch/.scripts/exfiltration_target.sh
+# /home/resch/.scripts/Gp5_exfiltration_target.sh
 echo "[+] Begin exfiltration preparation..."
 # Generate SSH key pair and copy it to the attacker machine:
 echo "[+] Generating SSH key pair and copying it to the attacker machine..."
