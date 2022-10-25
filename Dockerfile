@@ -20,8 +20,8 @@ RUN wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/metricbeat
 RUN metricbeat modules enable elasticsearch-xpack
 
 # # Run Metricbeat
-RUN wget https://raw.githubusercontent.com/S692/ossas/shah/trigger.sh
-RUN chmod +x trigger.sh
-ENTRYPOINT ["./trigger.sh", "&"]
- 
+# RUN wget https://raw.githubusercontent.com/S692/ossas/shah/trigger.sh
+# RUN chmod +x trigger.sh
+# ENTRYPOINT ["./trigger.sh", "&"]
+# CMD service metricbeat start && metricbeat setup -e
 EXPOSE 22 
