@@ -126,3 +126,8 @@ ls -la
   - Main configuration file of metricbeat that will be replaced with the one in the installed system.
 - kibana.yml
   - Enable Stack Monitoring and allows configuration of other monitoring features.
+### Importing & Viewing Kibana Dashboard
+1. Navigate to http://localhost:5601 and select Stack Management from the menu.
+2. On the Stack Management page, click on Saved Objects under Kibana from the menu.
+3. Select the Import button on the right side of the screen and click on "Select a file to import". Choose a file from your device to import into Kibana.
+4. To view the dashboard, search for "ICT3204 Assignment" in the Saved Objects searhbox, and select the item found. 
