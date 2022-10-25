@@ -82,3 +82,49 @@ cd /home/vagrant/exfiltrated/exfiltrate_backups_decrypted
 
 ls -la
 ```
+# Information on the project files
+### Attack Scripts/Files
+- Gp5_PEexploitCron.sh
+  - Privilege excalation via cronjob wildcard injection
+- Gp5_PEexploitSudo.sh
+  - Privilege escalaion via Sudo heap overflow vulnerability
+- Gp5_persistence1.sh && Gp5_persistence2.sh
+  - Persistence to enable other scripts to run on startup
+- Gp5_file_and_dir_discovery.sh && Gp5_file_and_dir_discovery-stripped.sh
+  - List directories and files of potential interest
+- Gp5_collectiontarget.sh
+  - Crontab with RSYNC to automatically add files into exfiltration destination folder
+- Gp5_exfiltration_attk.sh
+  - Setup collection point for the files that will be exfiltrated later on
+- Gp5_exfiltration_target.sh
+  - Encrypt and exfiltrate files out using SCP via SSH to the target machine
+- Gp5_after_exfiltration_attk.sh
+  - Used to decrypt exfiltrated files
+- Gp5_encrypt.py
+  - Used to encrypt and delete files listed from file and directories discovery
+- check.sh
+  - Check for dependencies for Gp5_encrpy.py to execute successfully
+- requirements.txt
+  - List of dependencies needed for encryption and deletion (impact)
+- Gp5_import_scripts_and_PE.sh
+  - Script to import the scripts above into the target machine for execution
+  - Runs Gp5_PEexploitCron.sh once all files have been downloaded
+---
+### Container Setup Files
+- Gp5_setup.sh
+  - Used to setup and download all the dependencies and files needed for the simulation attack to work on the target machine.
+- Gp5_attk_setup.sh
+  - Used to setup and download all the dependencies/files needed on the attacker's machine, to successfully exploit the target.
+---
+### Logs and Monitoring Tools (Beats) Setup files
+- auditbeat.yml
+  - Preconfigured auditbeat configuration file that will be replaced with the one in the target system.
+- filebeatConf.py
+  - Replaces keywords in the filebeats configuration file
+- redis.yml
+  - Redis module configuration file that exists in filebeats
+- system.yml
+  - System module configuration file that exisits in filebeats
+- metricbeat.yml
+  - Main configuration file of metricbeat taht will be replaced with the one in the installed system.
+- kibana.yml
