@@ -5,7 +5,7 @@ echo "Installing dependencies..."
 sudo apt update -y
 sudo apt install build-essential -y
 sudo apt install -y rsyslog
-wget https://raw.githubusercontent.com/S692/ossas/main/rsyslog/rsyslogConfig.py
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/rsyslog/rsyslogConfig.py
 python3 rsyslogConfig.py
 sudo service rsyslog start
 sudo apt install curl -y
@@ -45,7 +45,7 @@ tar xvzf redis-4.0.0.tar.gz
 cd /root/redis/redis-4.0.0
 dpkg --configure -a
 make
-wget https://raw.githubusercontent.com/S692/ossas/main/redis/redisConf.py
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/redis/redisConf.py
 python3 redisConf.py
 # Auto reply to multiple prompts, use printf
 printf "6379\n/root/redis/redis-4.0.0/redis.conf\n/var/log/redis-server.log\n/var/lib/redis/redis-server\n/root/redis/redis-4.0.0/src/redis-server\n\n" | /root/redis/redis-4.0.0/utils/install_server.sh
@@ -56,12 +56,12 @@ cd /root
 mkdir filebeat
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.3.3-amd64.deb
 dpkg -i filebeat-8.3.3-amd64.deb
-wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/filebeatConf.py
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/filebeat/filebeatConf.py
 python3 filebeatConf.py
 filebeat modules enable system
 filebeat modules enable redis
-wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/system.yml -O /etc/filebeat/modules.d/system.yml
-wget https://raw.githubusercontent.com/S692/ossas/main/filebeat/redis.yml -O /etc/filebeat/modules.d/redis.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/filebeat/system.yml -O /etc/filebeat/modules.d/system.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/filebeat/redis.yml -O /etc/filebeat/modules.d/redis.yml
 # Add new lines into filebeat
 echo "http.enabled: true" >> /etc/filebeat/filebeat.yml
 echo "http.port: 5066" >> /etc/filebeat/filebeat.yml
@@ -75,7 +75,7 @@ filebeat test output
 # Auditbeat
 curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-8.3.3-amd64.deb
 sudo dpkg -i auditbeat-8.3.3-amd64.deb
-wget https://raw.githubusercontent.com/S692/ossas/main/auditbeat/auditbeat.yml -O /etc/auditbeat/auditbeat.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/auditbeat/auditbeat.yml -O /etc/auditbeat/auditbeat.yml
 # Add new lines into Auditbeat
 echo "http.enabled: true" >> /etc/auditbeat/auditbeat.yml
 echo "http.port: 5067" >> /etc/auditbeat/auditbeat.yml
@@ -138,18 +138,18 @@ echo "set record=+sent" >> /etc/s-nail.rc
 # to plant dummy files in target for file and folder discovery 
 mkdir /var/research/3204ResearchMaterials
 cd /var/research/3204ResearchMaterials
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/3204_security_analytics.txt
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/3204lab-test-results-1.xlsx
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/Details-of-Deliverable-1_ICT3203.pdf
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/SIT_logo_2.png
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/%5BFORM%5D%20Code%20of%20Conduct%20ICT%20Legal%202019.pdf
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/birdfood.PNG
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/crying-cat-in-shower.jpg
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/excel-sample-1.xlsx
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/gudetama-1.png
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/kill-me-now.doc
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/random-word-doc-1.docx
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-file_and_dir_discovery/witches.jpeg
 sudo chown -R resch:resch /var/research
 
 # sudo cp /vagrant/smtp-setup/s-nail.rc /etc/s-nail.rc
@@ -162,10 +162,10 @@ echo 'init' | s-nail -s 'init' -Snorecord root
 
 # to plant dummy emails in target for collection
 cd /root/Maildir/new
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1645459365.VceI9947G467430.target
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666455338.VceI992cM851950.target
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
-wget https://raw.githubusercontent.com/S692/ossas/main/dummy-files-for-email/1666459365.VceI9947M833420.target
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-email/1645459365.VceI9947G467430.target
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-email/1666455338.VceI992cM851950.target
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-email/1666459259.VceI9ac0M576378.target
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/dummy-files-for-email/1666459365.VceI9947M833420.target
 
 # for ELK stack and Packetbeat
 wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-8.3.3-amd64.deb
@@ -190,8 +190,8 @@ sudo service packetbeat status
 curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.3.3-amd64.deb
 sudo dpkg -i metricbeat-8.3.3-amd64.deb
 metricbeat modules enable beat-xpack
-wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/metricbeat.yml -O /etc/metricbeat/metricbeat.yml
-wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/modules.d/beat-xpack.yml -O /etc/metricbeat/modules.d/beat-xpack.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/metricbeat/metricbeat.yml -O /etc/metricbeat/metricbeat.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/metricbeat/modules.d/beat-xpack.yml -O /etc/metricbeat/modules.d/beat-xpack.yml
 curl -XGET '172.18.0.4:9200' > cluster_uuid.json
 jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
 cluster_uuid=$(cat cluster_uuid.txt)
