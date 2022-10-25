@@ -75,11 +75,8 @@ python3 Gp5_encrypt.py fndd-stripped.txt
 4. After exfiltration, the encrypted exfiltrated files can be decrypted on the attacker's machine
 ```
 cd ~
-
 ./Gp5_after_exfiltration_attk.sh
-
 cd /home/vagrant/exfiltrated/exfiltrate_backups_decrypted
-
 ls -la
 ```
 # Information on the project files
