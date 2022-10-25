@@ -192,6 +192,10 @@ sudo dpkg -i metricbeat-8.3.3-amd64.deb
 metricbeat modules enable beat-xpack
 wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/metricbeat.yml -O /etc/metricbeat/metricbeat.yml
 wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/modules.d/beat-xpack.yml -O /etc/metricbeat/modules.d/beat-xpack.yml
+curl -XGET '172.18.0.4:9200' > cluster_uuid.json
+jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
+cluster_uuid=$(cat cluster_uuid.txt)
+echo "monitoring.cluster_uuid: $cluster_uuid" >> /etc/metricbeat/metricbeat.yml
 
 # run this last
 service filebeat start

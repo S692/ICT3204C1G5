@@ -186,3 +186,8 @@ processors:
 
 # This allows to enable 6.7 migration aliases
 #migration.6_to_7.enabled: true
+
+# For monitoring with Metricbeat
+http.enabled: true
+http.port: 5069
+monitoring.enabled: true
