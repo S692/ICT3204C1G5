@@ -94,9 +94,9 @@ ls -la
 - Gp5_exfiltration_attk.sh
   - Setup collection point for the files that will be exfiltrated later on
 - Gp5_exfiltration_target.sh
-  - Encrypt and exfiltrate files out using SCP via SSH to the target machine
+  - Encrypt and exfiltrate files out using SCP via SSH to the attacker's machine
 - Gp5_after_exfiltration_attk.sh
-  - Used to decrypt exfiltrated files
+  - Used to decrypt and extract the exfiltrated file
 - Gp5_encrypt.py
   - Used to encrypt and delete files listed from file and directories discovery
 - check.sh
