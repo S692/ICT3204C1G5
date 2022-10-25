@@ -126,5 +126,6 @@ ls -la
 - system.yml
   - System module configuration file that exisits in filebeats
 - metricbeat.yml
-  - Main configuration file of metricbeat taht will be replaced with the one in the installed system.
+  - Main configuration file of metricbeat that will be replaced with the one in the installed system.
 - kibana.yml
+  - Enable Stack Monitoring and allows configuration of other monitoring features.
