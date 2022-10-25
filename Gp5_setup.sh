@@ -195,6 +195,7 @@ wget https://raw.githubusercontent.com/S692/ossas/shah/metricbeat/modules.d/beat
 curl -XGET '172.18.0.4:9200' > cluster_uuid.json
 jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
 cluster_uuid=$(cat cluster_uuid.txt)
+echo "" >> /etc/metricbeat/metricbeat.yml
 echo "monitoring.cluster_uuid: $cluster_uuid" >> /etc/metricbeat/metricbeat.yml
 
 # run this last
