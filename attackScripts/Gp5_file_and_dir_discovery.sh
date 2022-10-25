@@ -63,4 +63,4 @@ ls -la -R /var/research/* >> fndd.txt
 
 echo -e "\n[+] End of File and Directory Discovery.\n"
 
-/home/resch/.scripts/file_and_dir_discovery-stripped.sh
+/home/resch/.scripts/Gp5_file_and_dir_discovery-stripped.sh
