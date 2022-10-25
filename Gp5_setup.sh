@@ -190,8 +190,8 @@ sudo service packetbeat status
 curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.3.3-amd64.deb
 sudo dpkg -i metricbeat-8.3.3-amd64.deb
 metricbeat modules enable beat-xpack
-wget https://raw.githubusercontent.com/S692/ICT3204C1G5/shah/metricbeat/metricbeat.yml -O /etc/metricbeat/metricbeat.yml
-wget https://raw.githubusercontent.com/S692/ICT3204C1G5/shah/metricbeat/modules.d/beat-xpack.yml -O /etc/metricbeat/modules.d/beat-xpack.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/metricbeat/metricbeat.yml -O /etc/metricbeat/metricbeat.yml
+wget https://raw.githubusercontent.com/S692/ICT3204C1G5/main/metricbeat/modules.d/beat-xpack.yml -O /etc/metricbeat/modules.d/beat-xpack.yml
 curl -XGET '172.18.0.4:9200' > cluster_uuid.json
 jq ".cluster_uuid" cluster_uuid.json > cluster_uuid.txt
 cluster_uuid=$(cat cluster_uuid.txt)
