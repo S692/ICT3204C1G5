@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
       d.build_dir = "."
       d.create_args = ["-it"]
       d.ports = ["5601:5601", "9200:9200", "5044:5044", "9600:9600"]
+	  d.volumes = []
       d.remains_running = true
       d.name = "elk"
     end

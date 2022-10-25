@@ -11,6 +11,7 @@ do
             break
     else
         echo "ES is not running yet"
+		service elasticsearch start
         sleep 5
     fi
 done
