@@ -79,15 +79,17 @@ cd ~
 cd /home/vagrant/exfiltrated/exfiltrate_backups_decrypted
 ls -la
 ```
+5. To check for persistence, once all attack scripts on the target machine have executed, shut down the target machine. Then, run the command `vagrant up --provision`. Once all guest machines have rebooted, Gp5_persistence2.sh should have been executed.
+
 # Information on the project files
 ### Attack Scripts/Files
 - Gp5_PEexploitCron.sh
   - Privilege excalation via cronjob wildcard injection
 - Gp5_PEexploitSudo.sh
   - Privilege escalaion via Sudo heap overflow vulnerability
-- Gp5_persistence1.sh && Gp5_persistence2.sh
+- Gp5_persistence1.sh & Gp5_persistence2.sh
   - Persistence to enable other scripts to run on startup
-- Gp5_file_and_dir_discovery.sh && Gp5_file_and_dir_discovery-stripped.sh
+- Gp5_file_and_dir_discovery.sh & Gp5_file_and_dir_discovery-stripped.sh
   - List directories and files of potential interest
 - Gp5_collectiontarget.sh
   - Crontab with RSYNC to automatically add files into exfiltration destination folder
