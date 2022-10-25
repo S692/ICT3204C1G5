@@ -115,13 +115,13 @@ ls -la
 ---
 ### Logs and Monitoring Tools (Beats) Setup files
 - auditbeat.yml
-  - Preconfigured auditbeat configuration file that will be replaced with the one in the target system.
+  - Preconfigured Auditbeat configuration file that will be replaced with the one in the target system.
 - filebeatConf.py
-  - Replaces keywords in the filebeats configuration file
+  - Replaces keywords in the Filebeat configuration file.
 - redis.yml
-  - Redis module configuration file that exists in filebeats
+  - Redis module configuration file that exists in Filebeat.
 - system.yml
-  - System module configuration file that exisits in filebeats
+  - System module configuration file that exisits in Filebeat.
 - metricbeat.yml
   - Main configuration file of metricbeat that will be replaced with the one in the installed system.
 - kibana.yml
