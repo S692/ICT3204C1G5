@@ -7,7 +7,7 @@
     - state
   xpack.enabled: true
   period: 10s
-  hosts: ["http://127.0.0.1:5066", "http://127.0.0.1:5067", "http://127.0.0.1:5068"]
+  hosts: ["http://127.0.0.1:5066", "http://127.0.0.1:5067", "http://127.0.0.1:5068", "http://127.0.0.1:5069"]
   #username: "user"
   #password: "secret"
 
